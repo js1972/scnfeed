@@ -239,7 +239,7 @@ new sap.m.App({pages: new sap.m.Page({
 		}
 	})
 })})
-.setModel(new sap.ui.model.json.JSONModel("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2420%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2421%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2015%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2184%26numItems%3D20%26full%3Dfalse'%20%7C%20sort(field%3D%22date%22%2C%20descending%3D%22true%22)&format=json&callback="))
+.setModel(new sap.ui.model.json.JSONModel("/yql"))
 .placeAt('content');
 
 //
