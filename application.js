@@ -1,5 +1,12 @@
 function handlePopupClose(oEvent) {
-	var popover = oEvent.getSource().getParent().getParent();
+	var popover;
+
+	if (sap.ui.Device.system.desktop === true) {
+		popover = oEvent.getSource().getParent().getParent();
+	} else {
+		popover = oEvent.getSource().getParent();
+	}
+
 	popover.close();
 	popover.destroy();
 }
