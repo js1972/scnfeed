@@ -1,0 +1,12 @@
+{
+	"routes": [
+		{
+			"path": "/yql",
+			"target": {
+				"type": "destination",
+				"name": "yql_scn_feed"
+			},
+			"description": "YQL - SCN feeds"
+		}
+	]
+}
