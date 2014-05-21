@@ -10,9 +10,10 @@
 /*
 Blue Crystal theme changes to add a background and make all foreground element slightly transparent.
 This has been done manually but it would be best to use the SAP theme designed (there is a HCP version).
+Background image course: http://scn.sap.com/servlet/JiveServlet/download/55151-1-299660/bg.jpg
 */
 .sapMGlobalBackgroundColor{background-color:#fff !important; opacity:0.9}    
-.sapMGlobalBackgroundImage{background:url('http://scn.sap.com/servlet/JiveServlet/download/55151-1-299660/bg.jpg') no-repeat center bottom ;}  
+.sapMGlobalBackgroundImage{background:url('bg.jpg') no-repeat center bottom ;}
 .sapMTile{background-color:rgba(255,255,255,0.55) !important;  
 -webkit-box-shadow: 7px 7px 20px 0px rgba(0,0,0,0.3); /* Safari and Chrome */  
 -moz-box-shadow: 7px 7px 20px 0px rgba(0,0,0,0.3); /* Firefox */  
