@@ -100,7 +100,7 @@ box-shadow: 7px 7px 20px 0px rgba(0,0,0,0.3); /* CSS3 */    }
 
 .sapMITBFilter .sapMITBText {
 	position: relative;
-	color: #ffffff;
+	color: #ffffff !important;
 	padding: 0.5rem 0rem 0rem;
 	width: 5rem;
 	overflow: hidden;
@@ -112,7 +112,7 @@ box-shadow: 7px 7px 20px 0px rgba(0,0,0,0.3); /* CSS3 */    }
 .sapMPage {
 	height: 100%;
 	position: relative;
-	opacity: 1;
+	opacity: 1 !important;
 }
 
 .sapMBarPH .sapMBtnContent {
@@ -121,14 +121,14 @@ box-shadow: 7px 7px 20px 0px rgba(0,0,0,0.3); /* CSS3 */    }
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	vertical-align: top;
-	color: #ffffff;
+	color: #ffffff !important;
 }
 
 .sapMBarPH {
 	vertical-align: top;
-	background-color: rgba(97,97,97,0.68);
+	background-color: rgba(97,97,97,0.68) !important;
 }
 
 .sapMDialogActions .sapMBtnContent {
-  color: #f6f6f6;
+  color: #f6f6f6 !important;
 }
