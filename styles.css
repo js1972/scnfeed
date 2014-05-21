@@ -127,3 +127,7 @@ box-shadow: 7px 7px 20px 0px rgba(0,0,0,0.3); /* CSS3 */    }
 	vertical-align: top;
 	background-color: rgba(97,97,97,0.68);
 }
+
+.sapMDialogActions .sapMBtnContent {
+  color: #f6f6f6;
+}
