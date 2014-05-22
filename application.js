@@ -51,6 +51,15 @@ function handleListItemPress(oEvent) {
 //
 // Create Application
 //
+// On SAPHCP we need to use the Destination service for external calls. These just act as a proxy on /yql.
+// However, elewhere there is no destination service so we speciofy the full url to the Yahoo YQL service. No CORS issues here.
+//
+if (window.location.href.indexOf('hanatrial') > -1) {
+	var model = new sap.ui.model.json.JSONModel("/yql?q=select%20*%20from%20rss%20where%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2420%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2421%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2015%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2184%26numItems%3D20%26full%3Dfalse'%20%7C%20sort(field%3D%22date%22%2C%20descending%3D%22true%22)&format=json&callback=");
+} else {
+	var model = new sap.ui.model.json.JSONModel("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2420%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2421%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2015%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2184%26numItems%3D20%26full%3Dfalse'%20%7C%20sort(field%3D%22date%22%2C%20descending%3D%22true%22)&format=json&callback=");
+}
+
 new sap.m.App({pages: new sap.m.Page({
 	title:"SCN Feeds",
 	content: new sap.m.IconTabBar({
@@ -239,7 +248,7 @@ new sap.m.App({pages: new sap.m.Page({
 		}
 	})
 })})
-.setModel(new sap.ui.model.json.JSONModel("/yql?q=select%20*%20from%20rss%20where%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2420%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2421%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2015%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2184%26numItems%3D20%26full%3Dfalse'%20%7C%20sort(field%3D%22date%22%2C%20descending%3D%22true%22)&format=json&callback="))
+.setModel(model)
 .placeAt('content');
 
 

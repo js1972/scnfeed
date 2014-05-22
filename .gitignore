@@ -1,0 +1,17 @@
+#Apple
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+#Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editors
+*.sublime-project
+*.sublime-workspace
+
+#Node.js
+static_server.js
+/node_modules
