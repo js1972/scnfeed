@@ -1,3 +1,14 @@
+var serviceUrlProxy = "/yql?q=select%20*%20from%20rss%20where%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2420%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2421%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2015%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2184%26numItems%3D20%26full%3Dfalse'%20%7C%20sort(field%3D%22date%22%2C%20descending%3D%22true%22)&format=json&callback=",
+	serviceUrlAllContent = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fallcontent%3fnumItems%3D20%26full%3Dfalse'%20%7C%20sort(field%3D%22date%22%2C%20descending%3D%22true%22)&format=json&callback=",
+	serviceUrlSelectedFeeds = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2420%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2421%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2015%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2184%26numItems%3D20%26full%3Dfalse'%20%7C%20sort(field%3D%22date%22%2C%20descending%3D%22true%22)&format=json&callback=";
+
+
+function handleRefresh(oEvent) {
+	var model = oEvent.getSource().getModel();
+	model.loadData(serviceUrlSelectedFeeds);
+	model.refresh();
+}
+
 function handlePopupClose(oEvent) {
 	var popover = sap.ui.getCore().byId('responsivePopover');
 	popover.close();
@@ -55,13 +66,18 @@ function handleListItemPress(oEvent) {
 // However, elewhere there is no destination service so we speciofy the full url to the Yahoo YQL service. No CORS issues here.
 //
 if (window.location.href.indexOf('hanatrial') > -1) {
-	var model = new sap.ui.model.json.JSONModel("/yql?q=select%20*%20from%20rss%20where%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2420%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2421%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2015%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2184%26numItems%3D20%26full%3Dfalse'%20%7C%20sort(field%3D%22date%22%2C%20descending%3D%22true%22)&format=json&callback=");
+	var model = new sap.ui.model.json.JSONModel(serviceUrlProxy);
 } else {
-	var model = new sap.ui.model.json.JSONModel("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2420%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2421%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2015%26numItems%3D20%26full%3Dfalse'%20or%20url%20%3D%20'http%3A%2F%2Fscn.sap.com%2Fcommunity%2Ffeeds%2Fblogs%3Fcommunity%3D2184%26numItems%3D20%26full%3Dfalse'%20%7C%20sort(field%3D%22date%22%2C%20descending%3D%22true%22)&format=json&callback=");
+	var model = new sap.ui.model.json.JSONModel(serviceUrlSelectedFeeds);
+	//var model = new sap.ui.model.json.JSONModel(serviceUrlAllContent);
 }
 
 new sap.m.App({pages: new sap.m.Page({
 	title:"SCN Feeds",
+	headerContent: new sap.m.Button({
+		icon: "sap-icon://refresh",
+		press: handleRefresh
+	}),
 	content: new sap.m.IconTabBar({
 		items: [
 			new sap.m.IconTabFilter({
