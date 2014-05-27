@@ -59,6 +59,8 @@ function handleListItemPress(oEvent) {
 	p.openBy(oEvent.getSource());
 }
 
+
+
 //
 // Create Application
 //
@@ -172,84 +174,48 @@ new sap.m.App({pages: new sap.m.Page({
 			//
 			
 			if (key === 'HCP') {
-				filter = new sap.ui.model.Filter('category', 'EQ', null);
+				filter = new sap.ui.model.Filter('link', 'EQ', null);
 				filter.fnTest = function(value) {
-					var tag;
-					
-					if (Array.isArray(value)) {
-						tag = value[0];
-					} else {
-						tag = value;
-					}
-					
-					if (tag) {
-						return tag.domain === '/community/developer-center/cloud-platform/tags';
-					} else {
-						return false;
-					}
+					var scnSpace = value.match(/(.*)\/blog/i)[1].toLowerCase(),
+						suffix = 'cloud-platform';
+
+					return scnSpace.indexOf(suffix, scnSpace.length - suffix.length) > -1;
 				};
 				
 				oBinding = oEvent.getSource().getItems()[1].getContent()[0].getBinding("items");
 				oBinding.filter([filter]);
 				
 			} else if (key === 'UI5') {
-				filter = new sap.ui.model.Filter('category', 'EQ', null);
+				filter = new sap.ui.model.Filter('link', 'EQ', null);
 				filter.fnTest = function(value) {
-					var tag;
-					
-					if (Array.isArray(value)) {
-						tag = value[0];
-					} else {
-						tag = value;
-					}
-					
-					if (tag) {
-						return tag.domain === '/community/developer-center/front-end/tags';
-					} else {
-						return false;
-					}
+					var scnSpace = value.match(/(.*)\/blog/i)[1].toLowerCase(),
+						suffix = 'front-end';
+
+					return scnSpace.indexOf(suffix, scnSpace.length - suffix.length) > -1;
 				};
 				
 				oBinding = oEvent.getSource().getItems()[2].getContent()[0].getBinding("items");
 				oBinding.filter([filter]);
 				
 			} else if (key === 'ABAP') {
-				filter = new sap.ui.model.Filter('category', 'EQ', null);
+				filter = new sap.ui.model.Filter('link', 'EQ', null);
 				filter.fnTest = function(value) {
-					var tag;
-					
-					if (Array.isArray(value)) {
-						tag = value[0];
-					} else {
-						tag = value;
-					}
-					
-					if (tag) {
-						return tag.domain === '/community/abap/tags';
-					} else {
-						return false;
-					}
+					var scnSpace = value.match(/(.*)\/blog/i)[1].toLowerCase(),
+						suffix = 'abap';
+
+					return scnSpace.indexOf(suffix, scnSpace.length - suffix.length) > -1;
 				};
 				
 				oBinding = oEvent.getSource().getItems()[3].getContent()[0].getBinding("items");
 				oBinding.filter([filter]);
 				
 			} else if (key === 'FPM') {
-				filter = new sap.ui.model.Filter('category', 'EQ', null);
+				filter = new sap.ui.model.Filter('link', 'EQ', null);
 				filter.fnTest = function(value) {
-					var tag;
-					
-					if (Array.isArray(value)) {
-						tag = value[0];
-					} else {
-						tag = value;
-					}
-					
-					if (tag) {
-						return tag.domain === '/community/web-dynpro-abap/floorplan-manager/tags';
-					} else {
-						return false;
-					}
+					var scnSpace = value.match(/(.*)\/blog/i)[1].toLowerCase(),
+						suffix = 'floorplan-manager';
+
+					return scnSpace.indexOf(suffix, scnSpace.length - suffix.length) > -1;
 				};
 				
 				oBinding = oEvent.getSource().getItems()[4].getContent()[0].getBinding("items");
